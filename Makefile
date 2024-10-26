@@ -59,6 +59,7 @@ USRINC = ${USRDIR}/include
 DIRS =\
 	${BINDIR}\
 	${BINDIR}/hash\
+	${BINDIR}/tools\
 	${OBJDIR}\
 	${OBJDIR}/hash\
 	${LIBDIR}\
@@ -120,12 +121,12 @@ ${USRLIB}/lib${LIB}${-g}%: ${LIBDIR}/lib${LIB}${-g}%
 endif
 ifneq (${TOOLS},)
 
-tools: library ${DIRS} ${patsubst %, ${BINDIR}/%${-g}, ${TOOLS}}
+tools: library ${DIRS} ${patsubst %, ${BINDIR}/tools/%${-g}, ${TOOLS}}
 
-${BINDIR}/%${-g}: ${SRCDIR}/%.cpp ${patsubst %, ${OBJDIR}/%${-g}.o, ${OBJS}}
+${BINDIR}/tools/%${-g}: ${SRCDIR}/tools/%.cpp ${patsubst %, ${OBJDIR}/%${-g}.o, ${OBJS}}
 	${CC} -o $@ $< -I${INCDIR} -L${LIBDIR} ${-l} ${-lLIB} ${CFLAGS}
 
-${USRBIN}/%${-g}: ${BINDIR}/%${-g}
+${USRBIN}/%${-g}: ${BINDIR}/tools/%${-g}
 	install -Dm755 $< $@
 
 endif
