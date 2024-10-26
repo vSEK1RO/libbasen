@@ -8,6 +8,9 @@ USRDIR ?= /usr
 		tools library tests docs cov clean
 
 LIB = basen
+
+TOOLS = ${LIB}
+
 OBJS =\
 	hex\
 	baseN\
@@ -15,8 +18,6 @@ OBJS =\
 	base64\
 	hash/sha256\
 	Exception
-
-TOOLS = ${LIB}
 
 TESTS =\
 	test-hex\
@@ -131,7 +132,7 @@ endif
 ifneq (${TESTS},)
 
 tests: library ${DIRS} ${patsubst %, ${BINDIR}/%${-g}, ${TESTS}}
-	${patsubst %, ./${BINDIR}/%${-g};, ${TESTS}}
+	echo ${patsubst %, && ./${BINDIR}/%${-g}, ${TESTS}}
 
 ${BINDIR}/%${-g}: ${TESTDIR}/%.cpp ${patsubst %, ${OBJDIR}/%${-g}.o, ${OBJS}}
 	${CC} -o $@ $< -I${INCDIR} -L${LIBDIR} ${-l} ${-lLIB} -lgtest ${CFLAGS}
