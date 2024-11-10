@@ -39,6 +39,7 @@ WORKSPACE.bazel
 BUILD.bazel
 
 # Dirs
+build
 bin
 obj
 lib

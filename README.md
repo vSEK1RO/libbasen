@@ -1,6 +1,6 @@
 # libbasen
 
-c++ encoding/decoding from arbitrary base
+c++20 encoding/decoding from arbitrary base
 
 <a href="https://repology.org/project/libbasen/versions">
     <img src="https://repology.org/badge/tiny-repos/libbasen.svg" alt="Packaging status">
@@ -12,17 +12,24 @@ c++ encoding/decoding from arbitrary base
 ## Contents
 
 - [Installation](#installation)
+    - [Package](#package)
+    - [Make](#make)
+    - [CMake](#cmake)
 - [Documentation](#documentation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 
 ## Installation
 
-Automatically from specified repositories:
+### Package
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/libbasen.svg)](https://repology.org/project/libbasen/versions)
 
-Manually using make:
+### Make
+
+For cli tool you should have [argparse](https://github.com/p-ranav/argparse) as make dependency.
+
+Install:
 ```
 make -j $(nproc)
 sudo make i USRDIR=(Your installation dir)
@@ -30,6 +37,22 @@ sudo make i USRDIR=(Your installation dir)
 Uninstall:
 ```
 sudo make uni USRDIR=(Your installation dir)
+```
+
+### CMake
+
+For using as dependency only (without cli tool, test, coverage, docs)
+
+```
+include(FetchContent)
+FetchContent_Declare(
+    basen
+    GIT_REPOSITORY https://github.com/vSEK1RO/libbasen.git
+    GIT_TAG        latest
+)
+FetchContent_MakeAvailable(basen)
+
+target_link_libraries(MyProject PRIVATE basen::basen)
 ```
 
 ## Documentation

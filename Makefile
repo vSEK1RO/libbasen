@@ -31,7 +31,7 @@ ifeq (${origin CC}, default)
 CC = g++
 endif
 
-CFLAGS = -std=c++23 -Wall -Wextra -Werror -Wno-unused-result -fPIC
+CFLAGS = -std=c++20 -Wall -Wextra -Werror -Wno-unused-result -fPIC
 
 ifneq (${DEBUG}, false)
 CFLAGS += -fsanitize=address,undefined -g -O0
