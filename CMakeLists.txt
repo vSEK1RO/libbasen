@@ -8,6 +8,10 @@ project(libbasen
 
 set(CXX_FLAGS "-Wall -Wextra -Werror -Wno-unused-result -O3")
 
+if(DEFINED BASEN_SHARED_LIBS)
+    set(BUILD_SHARED_LIBS ${BASEN_SHARED_LIBS})
+endif()
+
 set(OBJS
     base58
     base64

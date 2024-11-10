@@ -44,6 +44,7 @@ sudo make uni USRDIR=(Your installation dir)
 For using as dependency only (without cli tool, test, coverage, docs)
 
 ```
+set(BASEN_SHARED_LIBS ON)
 include(FetchContent)
 FetchContent_Declare(
     basen
