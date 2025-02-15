@@ -1,0 +1,7 @@
++ testing with &, chech() in PKGBUILD
++ simplifying documentation of baseN
++ windows compatibility
+argparse dependency notification in readme, make SHARED= in readme
++ cmake
+export "C"
+exceptions to enum instead of enum class
