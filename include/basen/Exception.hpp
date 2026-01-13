@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstdint>
 #include <exception>
 #include <source_location>
 #include <string>

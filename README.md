@@ -13,8 +13,7 @@ c++20 encoding/decoding from arbitrary base
 
 - [Installation](#installation)
     - [Package](#package)
-    - [Make](#make)
-    - [CMake](#cmake)
+    - [Meson](#meson)
 - [Documentation](#documentation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -25,35 +24,14 @@ c++20 encoding/decoding from arbitrary base
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/libbasen.svg)](https://repology.org/project/libbasen/versions)
 
-### Make
+### Meson
 
 For cli tool you should have [argparse](https://github.com/p-ranav/argparse) as make dependency.
 
-Install:
 ```
-make -j $(nproc)
-sudo make i USRDIR=(Your installation dir)
-```
-Uninstall:
-```
-sudo make uni USRDIR=(Your installation dir)
-```
-
-### CMake
-
-For using as dependency only (without cli tool, test, coverage, docs)
-
-```
-set(BASEN_SHARED_LIBS ON)
-include(FetchContent)
-FetchContent_Declare(
-    basen
-    GIT_REPOSITORY https://github.com/vSEK1RO/libbasen.git
-    GIT_TAG        latest
-)
-FetchContent_MakeAvailable(basen)
-
-target_link_libraries(MyProject PRIVATE basen::basen)
+meson setup build --buildtype=release
+cd build
+meson install
 ```
 
 ## Documentation
@@ -65,11 +43,7 @@ Available [here](https://vsek1ro.github.io/libbasen)
 libbasen package provides `basen` cli tool. Below are examples of use:
 ```
 echo "hello world" | basen -t hex > encoded.data
-```
-```
 basen -t hex -d < encoded.data > decoded.data
-```
-```
 echo "arbitrary alphabet" | basen -a "0123ABCD"
 ```
 
@@ -84,15 +58,17 @@ Now we would like to implement the following features:
 
 For build with with debug flags:
 ```
-make -j $(nproc) DEBUG=
+meson setup build-dev -Db_coverage=true
+cd build-dev
+meson compile
 ```
 For build tests (needed gtest package as dependency):
 ```
-make tests -j $(nproc) DEBUG=
+meson test
 ```
 For generating coverage:
 ```
-make cover -j $(nproc) DEBUG=
+ninja coverage
 ```
 
 [⬆️ Contents](#contents)

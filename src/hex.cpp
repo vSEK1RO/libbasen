@@ -1,5 +1,4 @@
 #include <limits>
-#include <stdexcept>
 
 #include <basen/baseN.hpp>
 #include <basen/Exception.hpp>

@@ -1,10 +1,10 @@
-#include <functional>
 #include <iostream>
 #include <unordered_map>
 
 #include <argparse/argparse.hpp>
 
 #include <basen.hpp>
+#include <config.hpp>
 
 #ifdef _WIN32
 #include <io.h>
@@ -80,6 +80,8 @@ int main(int argc, char *argv[])
     program.add_argument("-d", "--decode")
         .help("decode flag")
         .flag();
+    program.add_argument("-v", "--version")
+        .flag();
     try
     {
         program.parse_args(argc, argv);
@@ -87,6 +89,10 @@ int main(int argc, char *argv[])
     catch (const std::exception &err)
     {
         return basen::error(err.what(), program);
+    }
+    if (program.is_used("-v")) {
+        std::cout << BASEN_VER_STR << std::endl;
+        return 0;
     }
     if (!program.is_used("-t") && !program.is_used("-a"))
     {

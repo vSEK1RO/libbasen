@@ -1,12 +1,11 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
-#include <stdexcept>
 
 #include <basen/baseN.hpp>
 #include <basen/Exception.hpp>
 
-static constexpr auto log256 = std::log(256);
+static constexpr auto log256 = 5.545177444479562;
 
 namespace baseN
 {
@@ -40,7 +39,7 @@ namespace baseN
         std::span<const uint8_t> dv(std::find_if(data.begin(), data.end(), [](uint8_t item)
                                                  { return item != 0; }),
                                     data.end());
-        if (dv.size() > std::numeric_limits<size_t>::max() / log256)
+        if (dv.size() > (double)std::numeric_limits<size_t>::max() / log256)
         {
             throw basen::Exception(basen::Exception::Code::OVERFLOW);
         }

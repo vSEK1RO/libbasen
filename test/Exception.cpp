@@ -27,9 +27,3 @@ TEST(Exception, code)
         EXPECT_EQ(uint32_t(e.code()), uint32_t(basen::Exception::Code::BASE));
     }
 }
-
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

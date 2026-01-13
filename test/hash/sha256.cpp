@@ -16,9 +16,3 @@ TEST(hash, sha256_1e4)
         sha256(data);
     }
 }
-
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

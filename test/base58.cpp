@@ -21,9 +21,3 @@ TEST(base58, decodeCheck)
     EXPECT_EQ(test.first, hex::encode(decodeCheck(test.second)));
     EXPECT_THROW(decodeCheck("incorrect"), basen::Exception);
 }
-
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
