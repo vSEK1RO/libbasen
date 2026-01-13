@@ -29,7 +29,7 @@ c++20 encoding/decoding from arbitrary base
 For cli tool you should have [argparse](https://github.com/p-ranav/argparse) as make dependency.
 
 ```
-meson setup build --buildtype=release
+meson setup build --buildtype=release --prefix=/usr
 cd build
 meson install
 ```
